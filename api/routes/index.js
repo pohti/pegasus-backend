@@ -22,7 +22,7 @@ router.use('/student', studentRoutes)
 
 router.get('/', (req, res) => {
     console.log(`Received GET from ${currentPath}`)
-    res.send('Welcome to Pegasus API')
+    res.send('Hello from Express Server')
 })
 
 module.exports = router
