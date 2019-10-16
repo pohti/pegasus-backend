@@ -6,15 +6,6 @@ const joblistJSON = require('./dummyJSON/joblist.json')
 const getJobList = (req, res) => {
     const empID = parseInt(req.params.id)
     console.log(`Requesting joblist for ${empID}`)
-    
-    // const found = joblistJSON.some(job => job.id === empID)
-    
-    // if (found) {
-    //     res.json(joblistJSON.filter(job => job.id === empID))
-    // }
-    // else {
-    //     res.status(400).json({ msg: 'Job not found' })
-    // }
 
     mypool.getConnection((err, connection) => {
         if(err) {
