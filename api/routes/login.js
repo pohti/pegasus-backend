@@ -24,9 +24,13 @@ const login = (req,res) => {
                     }
                     if(rows && rows.length > 0) {
                         //var response = '{' + usertypeid + ' : ' + rows[0]["id"] + '}' 
+
+                        let result = rows[0]
+                        delete result['password']
+
                         res.json({
                             message: 'success',
-                            body: rows
+                            body: result
                         })
                     }
                     else if( !rows || rows.length == 0 ) {
