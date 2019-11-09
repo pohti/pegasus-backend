@@ -23,8 +23,11 @@ const login = (req,res) => {
                         res.status(500).json({ message: error })
                     }
                     if(rows && rows.length > 0) {
-                        var response = '{' + usertypeid + ' : ' + rows[0]["id"] + '}' 
-                        res.json(response)
+                        //var response = '{' + usertypeid + ' : ' + rows[0]["id"] + '}' 
+                        res.json({
+                            message: 'success',
+                            body: rows
+                        })
                     }
                     else if( !rows || rows.length == 0 ) {
                         res.status(200).json({
