@@ -20,6 +20,9 @@ router.post('/postjob', postjob)
 const shortlist = require('./shortlist')
 router.put('/shortlist/:appID', shortlist)
 
+const hire = require('./hire')
+router.put('/hire/:appID', hire)
+
 const updateprofile = require('./updateprofile')
 router.put('/updateprofile/:id', updateprofile)
 
