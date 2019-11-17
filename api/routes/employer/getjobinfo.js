@@ -3,7 +3,7 @@ const {env, sha1, mysql, mypool} = require('../../util')
 // return joblist matched by employer id
 const getjobinfo = (req, res) => {
     const jobID = parseInt(req.params.jobID)
-    console.log(`Requesting for a detailed job view, jobID: ${jobID}`)
+    console.log(`Requesting for a detailed info, jobID: ${jobID}`)
 
     mypool.getConnection((err, connection) => {
         if(err) {
