@@ -29,8 +29,6 @@ const getjobinfo = (req, res) => {
         }
         connection.release()
     })
-
-    //res.send(`Requesting for a detailed job view, jobID: ${jobID}`)
 }
 
 module.exports = getjobinfo
