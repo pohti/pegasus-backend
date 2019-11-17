@@ -7,6 +7,9 @@ const getJobList = require('./joblist')
 router.get('/joblist/:id', getJobList)
 const getJobView = require('./jobview')
 router.get('/jobview/:jobID', getJobView)
+const getjobinfo = require('./getjobinfo')
+router.get('/getjobinfo/:jobID', getjobinfo)
+
 
 // GET All
 const getalljobs = require('./getalljobs')
