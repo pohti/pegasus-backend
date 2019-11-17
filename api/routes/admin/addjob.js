@@ -14,7 +14,7 @@ const addjob = (req,res) => {
 
     let queryString = ` INSERT INTO pegasus.job 
                         SET title='${title}', industry='${industry}', description='${description}',
-                        requiredskills='${requiredskills}', dateposted='${currentDate}', location='${location}' yearsofexperience='${yearsofexperience}',
+                        requiredskills='${requiredskills}', dateposted='${currentDate}', location='${location}', yearsofexperience=${yearsofexperience},
                         empid = (
                             SELECT id FROM pegasus.employer
                             WHERE employer.id = '${empid}'
