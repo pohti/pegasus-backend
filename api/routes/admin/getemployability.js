@@ -6,7 +6,7 @@ const getalljobs = (req, res) => {
     mypool.getConnection((err, connection) => {
         if(err) {
             connection.release()
-            console.log(`Error getting mysql_pool connection: ${err}`)
+            console.log(`Error while getting mysql_pool connection: ${err}`)
             throw err
         }
         else {
