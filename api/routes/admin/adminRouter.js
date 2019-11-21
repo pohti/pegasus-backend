@@ -67,4 +67,7 @@ router.get('/', (res) => {
 const deletecareertip = require('./deletecareertip')
 router.delete('/deletecareertip/:tipID', deletecareertip)
 
+const deletepoll = require('./deletepoll')
+router.delete('/deletepoll/:id', deletepoll)
+
 module.exports = router
