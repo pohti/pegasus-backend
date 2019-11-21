@@ -22,7 +22,7 @@ const submitpoll = (req,res) => {
                 }
                 else {
                     res.send({
-                        message: `poll no.${pollID} updated`
+                        message: `success`
                     })
                 }
             })
