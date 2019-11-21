@@ -6,7 +6,7 @@ const updatepoll = (req,res) => {
 
     let queryString = `UPDATE pegasus.poll
                         SET question='${question}', option1='${option1}', option2='${option2}', option3="${option3}"
-                        WHERE id=${pollID}`
+                        WHERE pollid=${pollID}`
 
     console.log(`Request to update poll no: ${pollID}`)
 
