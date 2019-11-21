@@ -53,6 +53,9 @@ router.post('/addjob', addjob)
 const addcareertip = require('./addcareertip')
 router.post('/addcareertip', addcareertip)
 
+const addpoll = require('./addpoll')
+router.post('/addpoll', addpoll)
+
 router.get('/', (res) => {
     res.send('hello from backend server, admin route')
 })
