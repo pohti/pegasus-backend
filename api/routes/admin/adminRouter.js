@@ -46,6 +46,9 @@ router.put('/deletejob/:id', deletejob)
 const updatecareertip = require('./updatecareertip')
 router.put('/updatecareertip/:tipID', updatecareertip)
 
+const updatepoll = require('./updatepoll')
+router.put('/updatepoll/:pollID', updatepoll)
+
 // POST
 const addjob = require('./addjob')
 router.post('/addjob', addjob)
