@@ -34,13 +34,11 @@ const createUser = (req, res) => {
             break;
         default : res.send('Unknown user type')
     }
-
     if(usertype === 'student' || usertype === 'employer'){
         mypool.getConnection( (err, connection) => {
             if(err) {
                 connection.release()
                 console.log(`Error getting mysql_pool connection: ${err}`)
-                throw err
             }
             else {
                 connection.query(queryString, (err) => {
