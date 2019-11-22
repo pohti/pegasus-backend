@@ -1,4 +1,4 @@
-const { env, sha1, mysql, mypool } = require('../util')
+const { sha1,  mypool } = require('../util')
 
 const createUser = (req, res) => {
     let {usertype} = req.body
@@ -38,25 +38,23 @@ const createUser = (req, res) => {
     if(usertype === 'student' || usertype === 'employer'){
         mypool.getConnection( (err, connection) => {
             if(err) {
-                connection.release()
                 console.log(`Error getting mysql_pool connection: ${err}`)
+                res.send(err)
+                connection.release()
+                throw err
             }
             else {
                 connection.query(queryString, (err) => {
                     if(err) {
-                        if(err.sqlMessage.slice(0,9) === "Duplicate") res.send('Duplicate user')
-                        res.status(500).json({ err })
-                        connection.release()
+                        if(err.sqlMessage.slice(0,9) === "Duplicate") res.send("Duplicate user")
+                        else res.status(500).json({ err })
                     }
-                    else {
-                        res.send('successfully created new user')
-                        connection.release()
-                    }
+                    else res.send('successfully created new user')
                 })
             }
-            
-        } )
-    } else res.send('Unknown user type')
+            connection.release()
+        } ) 
+    } else res.send("Unknown user type")
 }
 
 module.exports = createUser;
