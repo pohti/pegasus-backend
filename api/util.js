@@ -7,7 +7,6 @@ const env = require('dotenv').config({
 const sha1 = require('sha1');
 const mysql = require('mysql');
 
-
 const mypool = mysql.createPool({
     host:       process.env.Db_Host,
     user:       process.env.Db_User,
