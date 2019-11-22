@@ -1,21 +1,16 @@
 const {env, sha1, mysql, mypool} = require('../../util')
 
-// return field of study paired with employability
-const getalljobs = (req, res) => {
-    console.log(`[ADMIN] Requesting for employability for students`)
+// return joblist matched by employer id
+const getallpolls = (req, res) => {
+    console.log(`[ADMIN] Requesting for all polls`)
     mypool.getConnection((err, connection) => {
         if(err) {
             connection.release()
-            console.log(`Error while getting mysql_pool connection: ${err}`)
+            console.log(`Error getting mysql_pool connection: ${err}`)
             throw err
         }
         else {
-            let queryString = `SELECT 
-                                    studenteducation.fieldofstudy, COUNT(*) as succcesscount
-                                FROM pegasus.studenteducation
-                                    LEFT JOIN pegasus.jobapplication ON studenteducation.studentid = jobapplication.studentid
-                                WHERE jobapplication.status="successful"
-                                GROUP BY fieldofstudy`
+            let queryString = `SELECT * FROM pegasus.poll`
             connection.query(queryString, (err, rows, fields) => {
                 if(err) {
                     res.status(500).json({ message: err })
@@ -34,4 +29,4 @@ const getalljobs = (req, res) => {
     })
 }
 
-module.exports = getalljobs
+module.exports = getallpolls

@@ -1,8 +1,8 @@
-const {env, sha1, mysql, mypool} = require('../../util')
+const {router, env, sha1, mysql, mypool} = require('../../util')
 
-// return joblist matched by employer id
-const getalljobs = (req, res) => {
-    console.log(`[ADMIN] Requesting for all jobs`)
+const getallcareertips = (req,res) => {
+    console.log(`Request for all career tips`)
+
     mypool.getConnection((err, connection) => {
         if(err) {
             connection.release()
@@ -10,8 +10,8 @@ const getalljobs = (req, res) => {
             throw err
         }
         else {
-            let queryString = `SELECT job.*, employer.username, employer.companyname FROM pegasus.job 
-                            JOIN pegasus.employer ON pegasus.job.empid = pegasus.employer.id;`
+            let queryString = `SELECT *
+                                FROM pegasus.careertips`
             connection.query(queryString, (err, rows, fields) => {
                 if(err) {
                     res.status(500).json({ message: err })
@@ -30,4 +30,4 @@ const getalljobs = (req, res) => {
     })
 }
 
-module.exports = getalljobs
+module.exports = getallcareertips

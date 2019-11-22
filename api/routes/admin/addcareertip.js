@@ -1,22 +1,17 @@
 const {env, mysql, mypool} = require('../../util')
 
-const addjob = (req,res) => {
+const addcareertip = (req,res) => {
     
-    let jobInfo = req.body
-    console.log(`Request to add a new job`, jobInfo)
+    let tipInfo = req.body
+    console.log(`Request to add a new career tip`, tipInfo)
     
-    let {empid, title, industry, description, requiredskills, location, yearsofexperience} = req.body 
+    let {title, url} = req.body 
     let currentDate = new Date()
     currentDate = `${currentDate.getFullYear()}-${currentDate.getMonth()+1}-${currentDate.getDate()}`
 
 
-    let queryString = ` INSERT INTO pegasus.job 
-                        SET title='${title}', industry='${industry}', description='${description}',
-                        requiredskills='${requiredskills}', dateposted='${currentDate}', location='${location}', yearsofexperience=${yearsofexperience},
-                        empid = (
-                            SELECT id FROM pegasus.employer
-                            WHERE employer.id = '${empid}'
-                        )`
+    let queryString = ` INSERT INTO pegasus.careertips
+                        SET title='${title}',  url="${url}", dateposted="${currentDate}" `
 
 
     // INSERT JSON INFO DB
@@ -34,7 +29,7 @@ const addjob = (req,res) => {
                 else {
                     res.send({
                         message: 'added',
-                        body: jobInfo
+                        body: tipInfo
                     })
                 }
             })
@@ -43,4 +38,4 @@ const addjob = (req,res) => {
     })
 }
 
-module.exports = addjob
+module.exports = addcareertip
