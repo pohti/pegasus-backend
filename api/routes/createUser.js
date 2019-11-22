@@ -3,6 +3,7 @@ const { env, sha1, mysql, mypool } = require('../util')
 const createUser = (req, res) => {
     let {usertype} = req.body
     console.log(`Req to create a new user, usertype: `, usertype)
+    console.log('Request', req.body)
 
 
     let {username, password} = req.body
@@ -32,8 +33,8 @@ const createUser = (req, res) => {
                         VALUES  ('${username}', '${password}', '${companyname}', '${companyphone}', 
                         '${companyemail}', '${industry}', '${companydescription}', '${companyaddress}' );`
             break;
-        default : res.send('Unknown user type')
     }
+
     if(usertype === 'student' || usertype === 'employer'){
         mypool.getConnection( (err, connection) => {
             if(err) {
