@@ -46,13 +46,15 @@ const createUser = (req, res) => {
                     if(err) {
                         if(err.sqlMessage.slice(0,9) === "Duplicate") res.send('Duplicate user')
                         res.status(500).json({ err })
+                        connection.release()
                     }
                     else {
                         res.send('successfully created new user')
+                        connection.release()
                     }
                 })
             }
-            connection.release()
+            
         } )
     } else res.send('Unknown user type')
 }
