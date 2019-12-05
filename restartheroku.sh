@@ -1,7 +1,7 @@
 #!/bin/bash
 
 while [ true ]; do
-    sleep 5m
+    sleep 30s
     echo "Restarting heroku"
     heroku restart
 done
